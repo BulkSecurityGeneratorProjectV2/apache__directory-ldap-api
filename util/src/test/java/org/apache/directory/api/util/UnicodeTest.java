@@ -60,7 +60,7 @@ public class UnicodeTest
         
         try
         {
-            File tmpFile = File.createTempFile( tmpFolder.toFile().getAbsolutePath(), "UTFUtils.test" );
+            File tmpFile = Files.createTempFile( tmpFolder.toFile().getAbsolutePath(), "UTFUtils.test" ).toFile();
             tmpFile.deleteOnExit();
             fos = new FileOutputStream( tmpFile );
             fis = new FileInputStream( tmpFile );

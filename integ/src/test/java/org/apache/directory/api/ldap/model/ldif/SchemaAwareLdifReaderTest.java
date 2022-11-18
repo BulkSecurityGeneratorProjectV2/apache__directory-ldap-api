@@ -36,6 +36,7 @@ import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.List;
 
 import org.apache.directory.api.i18n.I18n;
@@ -71,7 +72,7 @@ public class SchemaAwareLdifReaderTest
 
     private static File createFile( String name, byte[] data ) throws IOException
     {
-        File jpeg = File.createTempFile( name, "jpg" );
+        File jpeg = Files.createTempFile( name, "jpg" ).toFile();
 
         jpeg.createNewFile();
 
@@ -2202,7 +2203,7 @@ public class SchemaAwareLdifReaderTest
             StandardCharsets.UTF_8 );
         assertNotNull( reader.parseLdif( ldif2Bytes ).get( 0 ) );
 
-        File file = File.createTempFile( "offsetTest", "ldif" );
+        File file = Files.createTempFile( "offsetTest", "ldif" ).toFile();
         file.deleteOnExit();
         OutputStreamWriter writer = new OutputStreamWriter( new FileOutputStream( file ), Charset.defaultCharset() );
         writer.write( ldif );

@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 import javax.naming.NamingException;
 import javax.naming.directory.Attributes;
@@ -52,7 +53,6 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
 
-
 /**
  * @author <a href="mailto:dev@directory.apache.org">Apache Directory Project</a>
  */
@@ -71,7 +71,7 @@ public class LdifAttributesReaderTest
 
     private File createFile( String name, byte[] data ) throws IOException
     {
-        jpegFile = File.createTempFile( tmpFolder.toString(), name + ".jpg" );
+        jpegFile = Files.createTempFile( tmpFolder.toString(), name + ".jpg" ).toFile();
 
         DataOutputStream os = new DataOutputStream( new FileOutputStream( jpegFile ) );
 
